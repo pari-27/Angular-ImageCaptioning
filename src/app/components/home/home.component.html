@@ -1,0 +1,44 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="space-evenly center">
+  <div class="background"></div>
+  <mat-card class="image-box">
+    <mat-card-header>
+      <mat-card-title>Uploaded Image</mat-card-title>
+    </mat-card-header>
+    <img mat-card-md-image src="assets/img/background.png" width="400px" height="400px">
+  </mat-card>
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Generate Caption</mat-card-title>
+    </mat-card-header>
+    <form class="example-form">
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Upload File">
+        </mat-form-field>
+        <button id="upload" mat-stroked-button>Upload
+          <span class="material-icons">
+            publish
+          </span>
+        </button>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>
+<!-- list of captions -->
+<div class="caption-wrapper" fxLayout="row" fxLayoutAlign="space-evenly center">
+  <kendo-grid [data]="gridData" [pageSize]="state.take" [skip]="state.skip" [sort]="state.sort" [sortable]="true"
+    [pageable]="true" scrollable="none" (dataStateChange)="dataStateChange($event)">
+    <kendo-grid-column field="id" title="ID" [width]="250"
+      [headerStyle]="{'background-color': '#666','color': '#fff','line-height': '1em'}"
+      [style]="{'background-color': '#888','color': '#fff'}"
+      [footerStyle]="{'background-color': '#888','color': '#fff'}">
+      <ng-template kendoGridFooterTemplate>Quotes: 5</ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="tag" title="Tag" [width]="250"
+      [headerStyle]="{'background-color': '#666','color': '#fff','line-height': '1em'}"> </kendo-grid-column>
+      <kendo-grid-column field="text" title="Text" [width]="250"
+      [headerStyle]="{'background-color': '#666','color': '#fff','line-height': '1em'}"> </kendo-grid-column>
+    
+  </kendo-grid>
+
+</div>
